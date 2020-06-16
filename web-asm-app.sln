@@ -1,0 +1,22 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web-asm-app", "web-asm-app\web-asm-app.csproj", "{FFD252EA-DAEC-4B1D-8E6D-F6527A452878}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CA34DF35-8DED-46EE-8851-2E6749A725F1}"
+	ProjectSection(SolutionItems) = preProject
+		web-asm-app.sln = web-asm-app.sln
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFD252EA-DAEC-4B1D-8E6D-F6527A452878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFD252EA-DAEC-4B1D-8E6D-F6527A452878}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFD252EA-DAEC-4B1D-8E6D-F6527A452878}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFD252EA-DAEC-4B1D-8E6D-F6527A452878}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
