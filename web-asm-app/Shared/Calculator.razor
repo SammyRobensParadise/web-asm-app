@@ -1,22 +1,31 @@
 @inject IJSRuntime jsRuntime
 
 <div class="calculator">
-<input @bind="CurrentValue" />
-<button type="button" class="btn btn-primary" id="run-calculation">Calculate</button>
-<div><p id="result"></p></div>
+<input @bind="CurrentValue" type="number" placeholder="enter price" />
+<button type="button" class="btn btn-primary" id="run-calculation" @onclick="calculateRatio">Calculate</button>
+@if(hasResults){
+<div><p id="result">@result @name</p></div>
+}
 </div>
+
 @code{
     [Parameter]
-    public int price { get; set; }
+    public double price { get; set; }
 
-    private int CurrentValue { get; set; }
+    [Parameter]
+    public string name { get; set; }
+    private double CurrentValue { get; set; }
 
-    private int total { get; set; }
+    private double total { get; set; }
 
-    private async void calculateRatio()
+    private bool hasResults { get; set; } = false;
+
+    private string result { get; set; } = "";
+
+    private void calculateRatio()
     {
-        await jsRuntime.InvokeAsync<object>("accessDOMElement");
-
-
+        double r = CurrentValue / price;
+        result = r.ToString();
+        hasResults = !hasResults;
     }
 }
