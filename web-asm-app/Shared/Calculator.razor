@@ -5,7 +5,7 @@
 <input @bind="CurrentValue" type="number" placeholder="enter price" />
 <button type="button" class="btn btn-primary" id="run-calculation" @onclick="calculateRatio">Calculate your @name ratio</button>
 @if(hasResults){
-<div class="result"><h3 id="result">you can get @result equivalent @name</h3></div>
+<div class="result"><h3 id="result">you can get @result equivalent @name<span>s</span> </h3></div>
 }
 </div>
 
@@ -27,6 +27,6 @@
     {
         double r = Math.Round(CurrentValue / price, 2, MidpointRounding.ToEven);
         result = r.ToString();
-        hasResults = !hasResults;
+        hasResults = true;
     }
 }
