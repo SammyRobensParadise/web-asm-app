@@ -1,12 +1,26 @@
 <div class="calculator">
-
+<div class="container">
+    <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">$</span>
+  </div>
 <input @bind="CurrentValue" type="number" placeholder="enter price" />
+  <div class="input-group-append">
+    <span class="input-group-text">.00</span>
+  </div>
+</div>
 <button type="button" class="btn btn-primary" id="run-calculation" @onclick="calculateRatio">Calculate your @name ratio</button>
 @if(hasResults){
-<div class="result"><h3 id="result">you can get @result equivalent @name<span>s</span> </h3></div>
+    <br>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">@result</h1>
+    <p class="lead">You can get @result @name<span>s</span>.</p>
+  </div>
+</div>
 }
 </div>
-
+</div>
 @code{
     [Parameter]
     public double price { get; set; }
