@@ -38,7 +38,8 @@
     private void calculateRatio()
     {
         double r = Math.Round(CurrentValue / price, 2, MidpointRounding.ToEven);
-        result = r.ToString();
+        string s = Convert.ToDecimal(r).ToString("#,##0.00");
+        result = s;
         hasResults = true;
     }
 }
