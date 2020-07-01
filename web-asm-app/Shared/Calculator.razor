@@ -15,31 +15,45 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4">@result</h1>
-    <p class="lead">You can get @result @name<span>s</span>.</p>
+    @if(isValidInput){
+     <p class="lead">You can get @result @name<span>s</span>.</p>
+    }
   </div>
 </div>
 }
 </div>
 </div>
 @code{
-    [Parameter]
-    public double price { get; set; }
+  [Parameter]
+      public double price { get; set; }
 
-    [Parameter]
-    public string name { get; set; }
-    private double CurrentValue { get; set; }
+      [Parameter]
+      public string name { get; set; }
+      private double CurrentValue { get; set; }
 
-    private double total { get; set; }
+      private double total { get; set; }
 
-    private bool hasResults { get; set; } = false;
+      private bool hasResults { get; set; } = false;
 
-    private string result { get; set; } = "";
+      private bool isValidInput { get; set; } = false;
 
-    private void calculateRatio()
-    {
-        double r = Math.Round(CurrentValue / price, 2, MidpointRounding.ToEven);
-        string s = Convert.ToDecimal(r).ToString("#,##0.00");
-        result = s;
-        hasResults = true;
-    }
+      private string result { get; set; } = "";
+
+      private void calculateRatio()
+      {
+          if (CurrentValue < 0)
+          {
+              result = "Your price cannot be less than 0";
+              hasResults = true;
+              isValidInput = false;
+          }
+          else
+          {
+              double r = Math.Round(CurrentValue / price, 2, MidpointRounding.ToEven);
+              string s = Convert.ToDecimal(r).ToString("#,##0.00");
+              result = s;
+              hasResults = true;
+              isValidInput = true;
+          }
+      }
 }
