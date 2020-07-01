@@ -54,19 +54,18 @@
 @code{
   [Parameter]
       public double price { get; set; }
-
       [Parameter]
       public string name { get; set; }
       private double CurrentValue { get; set; }
-
       private double total { get; set; }
-
       private bool hasResults { get; set; } = false;
-
       private bool isValidInput { get; set; } = false;
-
       private string result { get; set; } = "";
-
+      private int shawarmaCalories { get; set; } = 1215;
+      private double shawaramaGramsFat { get; set; } = 73;
+      private int falafelCalories { get; set; } = 750;
+      private int falafelGramsFat { get; set; } = 30;
+      private double length { get; set; } = 0.2032;
       private void calculateRatio()
       {
           if (CurrentValue < 0)
@@ -83,5 +82,10 @@
               hasResults = true;
               isValidInput = true;
           }
+      }
+
+      private void determineRatios()
+      {
+
       }
 }
