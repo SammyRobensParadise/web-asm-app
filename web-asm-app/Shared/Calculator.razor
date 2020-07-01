@@ -34,12 +34,12 @@
     <tr>
       <th scope="row">Calories</th>
       <td>@calorieResults</td>
-      <td>Calorie</td>
+      <td>Calories</td>
     </tr>
     <tr>
       <th scope="row">Meters</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
+      <td>@lengthResults</td>
+      <td>meters of @name</td>
     </tr>
     <tr>
       <th scope="row">Kilograms</th>
@@ -71,7 +71,8 @@
       private int falafelCalories { get; set; } = 750;
       private int falafelGramsFat { get; set; } = 30;
       private double length { get; set; } = 0.2032;
-      private void calculateRatio()
+      private string lengthResults { get; set; } = ""
+  private void calculateRatio()
       {
           if (CurrentValue < 0)
           {
@@ -84,6 +85,7 @@
 
               double r = Math.Round(CurrentValue / price, 2, MidpointRounding.ToEven);
               calorieResults = determineCalories(r);
+              lengthResults = determineMeters(r);
               string s = Convert.ToDecimal(r).ToString("#,##0.00");
               result = s;
               hasResults = true;
@@ -105,5 +107,11 @@
               string s = Convert.ToDecimal(calorieResults).ToString("#,##0.00");
               return s;
           }
+      }
+      private string determineMeters(double result)
+      {
+          double meterResults = result * length;
+          string s = Convert.ToDecimal(meterResults).ToString("#,##0.00");
+          return s;
       }
 }
