@@ -43,8 +43,8 @@
     </tr>
     <tr>
       <th scope="row">Kilograms</th>
-      <td>Larry</td>
-      <td>the Bird</td>
+      <td>@kilogramFatResults</td>
+      <td>Kilograms</td>
     </tr>
   </tbody>
 </table>
@@ -70,7 +70,8 @@
       private double shawaramaGramsFat { get; set; } = 73;
       private int falafelCalories { get; set; } = 750;
       private int falafelGramsFat { get; set; } = 30;
-      private double length { get; set; } = 0.2032;
+      private string kilogramFatResults { get; set; } = "";
+      private double length { get; set; } = 0.3048;
       private string lengthResults { get; set; } = "";
       private void calculateRatio()
       {
@@ -86,13 +87,13 @@
               double r = Math.Round(CurrentValue / price, 2, MidpointRounding.ToEven);
               calorieResults = determineCalories(r);
               lengthResults = determineMeters(r);
+              kilogramFatResults = determineMass(r);
               string s = Convert.ToDecimal(r).ToString("#,##0.00");
               result = s;
               hasResults = true;
               isValidInput = true;
           }
       }
-
       private string determineCalories(double result)
       {
           if (name == "Shawarma")
@@ -113,5 +114,20 @@
           double meterResults = result * length;
           string s = Convert.ToDecimal(meterResults).ToString("#,##0.00");
           return s;
+      }
+      private string determineMass(double result)
+      {
+          if (name == "Shawarma")
+          {
+              double fatResults = (result * shawaramaGramsFat) / 1000;
+              string s = Convert.ToDecimal(fatResults).ToString("#,##0.00");
+              return s;
+          }
+          else
+          {
+              double fatResults = (result * falafelGramsFat) / 1000;
+              string s = Convert.ToDecimal(fatResults).ToString("#,##0.00");
+              return s;
+          }
       }
 }
